@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-LITERATE-REQUEST EXAMPLES</title>
+</head>
+
+<body>
+    <script src="literate-req.js"></script>
+    <script>
+        litreq.get({
+            type: 'GET',
+            url: 'http://127.0.0.1:5500/README.md',
+            success: function (response) {
+                console.log("OK");
+            },
+            error: function () {
+                console.log("bad");
+            }
+        })
+    </script>
+</body>
+
+</html>
