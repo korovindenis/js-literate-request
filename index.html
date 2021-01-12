@@ -10,11 +10,21 @@
 <body>
     <script src="literate-req.js"></script>
     <script>
-        litreq.get({
-            type: 'GET',
-            url: 'http://127.0.0.1:5500/README.md',
+        // litreq.get({
+        //     type: 'GET',
+        //     url: 'http://javascr/js-literate-request/README.md',
+        //     success: function (response) {
+        //         console.log(response);
+        //     },
+        //     error: function () {
+        //         console.log("bad");
+        //     }
+        // })
+        litreq.json({
+            url: 'http://javascr/js-literate-request/README.md',
+            data: "AAAA",
             success: function (response) {
-                console.log("OK");
+                console.log(response.A);
             },
             error: function () {
                 console.log("bad");
