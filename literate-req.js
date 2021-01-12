@@ -17,7 +17,7 @@ const litreq = {
 
         p.success();
       } else {
-        // We reached our target server, but it returned an error
+        // We reached our target server, but it returned an error.
 
       }
     };
