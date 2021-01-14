@@ -1,6 +1,4 @@
-"use strict";
-
-class LiterateReq {
+export default class {
   /**
    * @param {string} type 
    * @param {string} url
@@ -54,5 +52,3 @@ class LiterateReq {
     this._req((p.type="get", p.returnJson=true, p));
   }
 }
-
-const litreq = new LiterateReq();
