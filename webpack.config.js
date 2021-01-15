@@ -19,12 +19,12 @@ module.exports = {
         rules: [
           {
             test: /\.m?js$/,
-            exclude: /node_modules/,
+            exclude: ['/node_modules/'],
             use: {
               loader: "babel-loader",
               options: {
                 presets: ['@babel/preset-env'],
-                plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-classes", "@babel/plugin-transform-modules-commonjs"]
+                plugins: ["@babel/plugin-proposal-class-properties", "babel-plugin-add-module-exports", "@babel/plugin-transform-classes"]
               }
             }
           }

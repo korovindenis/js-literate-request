@@ -11,9 +11,9 @@
     <script src="dist/main.bundle.js"></script>
     <script>
         console.log($);
-        $.get({
+        $.req.get({
              type: 'GET',
-            url: 'http://javascr/js-literate-request/README.md',
+            url: 'http://127.0.0.1:5500/README.md',
              success: function (response) {
                  console.log(response);
              },

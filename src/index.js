@@ -1,3 +1,5 @@
-import LiterateReq from './lib.js';
+import LiterateReq  from './lib.js';
 
-export { LiterateReq }
+let req = new LiterateReq();
+
+export {req};
