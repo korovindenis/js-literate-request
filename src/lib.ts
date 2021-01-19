@@ -1,11 +1,19 @@
 export default class {
+  constructor(){
+    type _paramGetReq = {
+      type: string;
+      url: number;
+      success: object; 
+      error: object;
+    };
+  }
   /**
    * @param {string} type 
    * @param {string} url
    * @param {function} success 
    * @param {function} error 
    */
-  _req = (p) => {
+  _req = (p: any) => {
     let req = new XMLHttpRequest();
     req.open(p.type, p.url, true);
     req.onerror = p.error;
@@ -31,7 +39,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  get = (p) => {
+  get = (p: any) => {
     this._req((p.type="get", p));
   }
   /**
@@ -40,7 +48,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  post = (p) => {
+  post = (p: any) => {
     this._req((p.type="post", p));
   }
   /**
@@ -48,7 +56,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  json = (p) => {
+  json = (p: any) => {
     this._req((p.type="get", p.returnJson=true, p));
   }
 }

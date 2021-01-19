@@ -1,4 +1,4 @@
-import LiterateReq  from './lib.js';
+import LiterateReq from './lib.ts';
 
 let req = new LiterateReq();
 
