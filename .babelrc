@@ -1,0 +1,8 @@
+{
+  "ignore": ["/node_modules/"],
+  "presets": ["@babel/preset-env","@babel/typescript"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-classes"
+  ]
+}

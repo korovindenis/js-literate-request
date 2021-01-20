@@ -8,18 +8,28 @@
 </head>
 
 <body>
-    <script src="literate-req.js"></script>
+    <script src="dist/main.bundle.js"></script>
     <script>
-        litreq.get({
-            type: 'GET',
+        console.log($);
+        $.req.get({
+             type: 'GET',
             url: 'http://127.0.0.1:5500/README.md',
-            success: function (response) {
-                console.log("OK");
-            },
-            error: function () {
+             success: function (response) {
+                 console.log(response);
+             },
+             error: function () {
                 console.log("bad");
-            }
-        })
+             }
+         })
+    //     e.get({
+    //     url: "http://127.0.0.1:5500/README.md",
+    //     success: function (e) {
+    //         console.log(e)
+    //     },
+    //     error: function () {
+    //         console.log("bad")
+    //     }
+    // })
     </script>
 </body>
 
