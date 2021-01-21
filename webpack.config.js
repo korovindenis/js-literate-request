@@ -1,11 +1,13 @@
-const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require("path");
+const buildMode = require("yargs").argv.env == "dev" ? "development" : "production";
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-    mode: 'production',
+    mode: buildMode,
     entry: {
         main: path.resolve(__dirname, './src/index.ts'),
     },
+    devtool: "source-map",
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
@@ -23,12 +25,7 @@ module.exports = {
             use: {
               loader: "babel-loader"
             }
-          },
-          {
-            test: /\.js$/,
-            enforce: "pre",
-            use: ["source-map-loader"],
-          },
+          }
         ]
       }
 }

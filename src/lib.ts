@@ -1,28 +1,37 @@
+interface ParamGetReq {
+  type: string;
+  url: string;
+  returnJson?: boolean;
+  success?: (...arg: Array<string>)=>{}; 
+  error?: ()=>{};
+};
+interface ParamPostReq extends ParamGetReq{
+  data?: string
+};
+interface ParamJsonReq extends ParamPostReq{
+  returnJson?: boolean;
+};
+type ResultResponse  = string | any;
+
 export default class {
-  constructor(){
-    type _paramGetReq = {
-      type: string;
-      url: number;
-      success: object; 
-      error: object;
-    };
-  }
+  postCharset: string = "UTF-8";
+
   /**
    * @param {string} type 
    * @param {string} url
    * @param {function} success 
    * @param {function} error 
    */
-  _req = (p: any) => {
+  _req = (p: ParamJsonReq): any => {
     let req = new XMLHttpRequest();
     req.open(p.type, p.url, true);
     req.onerror = p.error;
     
-    if (p.type == "post") req.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+    if (p.type == "post") req.setRequestHeader('Content-Type',`application/x-www-form-urlencoded; charset=${this.postCharset}`);
 
     req.onload = function() {
       if (this.status < 400 && this.status >= 200) {
-        let resp = p.returnJson ? JSON.parse(this.response) : this.response;
+        const resp: ResultResponse = p.returnJson ? JSON.parse(this.response) : this.response;
         p.success(resp);
       } else {
         p.error();
@@ -39,7 +48,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  get = (p: any) => {
+  get = (p: ParamGetReq): any => {
     this._req((p.type="get", p));
   }
   /**
@@ -48,7 +57,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  post = (p: any) => {
+  post = (p: ParamPostReq): any => {
     this._req((p.type="post", p));
   }
   /**
@@ -56,7 +65,7 @@ export default class {
    * @param {function} success 
    * @param {function} error 
    */
-  json = (p: any) => {
+  json = (p: ParamJsonReq): any => {
     this._req((p.type="get", p.returnJson=true, p));
   }
 }
