@@ -1,29 +1,60 @@
 import classUnderTest from '../src/lib';
 
-describe("Private function", function() {
-  test('Check class', function() {
+// mock XMLHttpRequest
+const mockXHR = {
+  open: jest.fn(),
+  send: jest.fn(),
+  readyState: 4,
+  responseText: JSON.stringify([
+    { title: "test post" },
+    { tile: "second test post" }
+  ]),
+  setRequestHeader: ()=>{ return true }
+};
+// const oldXMLHttpRequest = window.XMLHttpRequest;
+window.XMLHttpRequest = jest.fn(() => mockXHR);
+
+// mock log
+console.log = jest.fn();
+
+ /*
+describe("Check available methods", function() {
+ test('Check class', function() {
     const _classUnderTest = new classUnderTest();
     expect(_classUnderTest).toBeTruthy();
   });
-  test('Check method', function() {
+  test('Check available method', function() {
     const _classUnderTest = new classUnderTest();
-    expect(typeof _classUnderTest).toBe("object");
+    ["get","post","json"].forEach(function(methodName) {
+      expect(typeof _classUnderTest[methodName]).toBe("function");
+    });
   });
 });
-
-/*
-describe("Private function", () => {
-  test('Check _req', () => {
-    console.log(req);
-    let testClass = new req();
-    let checkGet = testClass.get({type:"get",url:"http://localhost/"});
-    expect(checkGet).toBe("object");
+describe("Calling methods", function() {
+  test('Run Get, Post, Json', function() {
+    const _classUnderTest = new classUnderTest();
+    ["get","post","json"].forEach(function(methodName) {
+      const _checkReq = _classUnderTest[methodName]({
+        url: 'http://hello.world/'
+      });
+      expect(_classUnderTest[methodName]).toBeTruthy();
+    });
+  });
+});*/
+describe("Check success,error func of methods", function() {
+  test('Run Get, Post, Json', function() {
+    const _classUnderTest = new classUnderTest();
+    ["get","post","json"].forEach(function(methodName) {
+      const _checkReq = _classUnderTest[methodName]({
+        url: 'http://hello.world/',
+        success: function (response) {
+          console.log("ok");
+        },
+        error: function () {
+          console.log("bad");
+        }
+      });
+      expect(console.log).toHaveBeenCalledWith("ok");
+    });
   });
 });
-/*
-describe("Public function", () => {
-  test('Check _req', () => {
-    expect(true).toBe(true);
-  });
-});
-*/
