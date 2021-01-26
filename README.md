@@ -56,3 +56,5 @@ $.req.post({
         }
     })
 ```
+
+Source https://github.com/korovindenis/js-literate-request
