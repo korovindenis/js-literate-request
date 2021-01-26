@@ -4,8 +4,7 @@ A simple library for network queries.
 
   - Clean JavaScript, without fraemworks
   - Get, Post, JSON request
-  - Test on JEST
-  - TypeScript
+  - TypeScript, Babel, WebPack, JEST
   - 1,6kb
   - Magic
 
